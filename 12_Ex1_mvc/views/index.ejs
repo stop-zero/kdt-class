@@ -1,79 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mvc 변경 실습1</title>
 
-    <!-- axios 실습을 위해 axios cdn 추가 -->
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=`, initial-scale=1.0">
+  <title>Document</title>
 
-  <body>
-    <form name="register">
-      <h2>실습 axios post 로그인</h2>
-      <label for="id">아이디</label>
-      <input type="text" id="id" /><br>
-      <label for="pw">비밀번호</label>
-      <input type="pw" id="pw" /><br>
-      <label for="name">이름</label>
-      <input type="text" id="name" /><br>
-      
-      <br />
-    </form>
-    <br />
-    <button type="button" onclick="axiosPost()">로그인</button>
-    <br />
-    <br />
-    <div class="result2"></div>
+  <!-- axios 실습을 위해 axios cdn 추가 -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-    <script>
-      const resultBox2 = document.querySelector(".result2");
-      function axiosPost() {
-        console.log("click axiosPost btn!!");
+  <style>
+    .success {
+      color: blue;
+      font-weight: 700;
+    }
 
-        // 폼 선택하기
-        const form = document.forms["register"];
+    .error {
+      color: red;
+      font-weight: 700;
+    }
+  </style>
+</head>
 
-        // 서버에 전송할 폼 입력값을 저장하는 객체
-        const formInfo = {
-          id: form.id.value,
-          pw: form.pw.value,
-          name: form.name.value,
-        };
+<body>
+  <p>app.js에 저장한 id는 banana이고, pw는 4321이다.</p>
+  <form name="login">
+    <label for="userId">아이디</label>
+    <input type="text" id="userId" name="userId">
+    <label for="userPw">비밀번호</label>
+    <input type="password" id="userPw" name="userPw">
+    <button type="button" onclick="clickLogin();">로그인</button>
+  </form>
+  <div class="login-result"></div>
 
-        const formInfo_Save = {
-          id: "banana",
-          pw: "4321",
-        };
+  <script>
+    const loginResult = document.querySelector('.login-result')
 
-        axios({
-          url: "/axios",
-          method: "POST",
-          data: formInfo, //POST 요청 -> data 키 값에 담아서 보내기1
-        })
-          .then((response) => {
-            if (
-              form.id.value == formInfo_Save.id &&
-              form.pw.value == formInfo_Save.pw &&
-              form.name.value == formInfo_Save.name
-            ) {
-              resultBox2.textContent = `${response.data.id}님 로그인 성공🍌`;
-              resultBox2.style.color = "blue";
-            } else {
-              resultBox2.textContent = `아이디 또는 패스워드 오류ㅠㅠㅠ`;
-              resultBox2.style.color = "red";
-            }
-          })
-          .catch((error) => {
-            console.log("Error!", error.message);
-            resultBox2.textContent = "알 수 없는 에러 발생!!";
-          });
+    function clickLogin() {
+      console.log('click login btn!')
+
+      const form = document.forms['login'];
+      const formInfo = {
+        userId: form.userId.value,
+        userPw: form.userPw.value
       }
-    </script>
-  </body>
+
+      axios({
+        url: '/practice2',
+        method: 'POST',
+        data: formInfo
+      }).then(function(response) {
+        console.log(response)
+        console.log(response.data)
+
+        if (response.data.isLogin) {
+          // 로그인 성공
+          // response.data => {isLogin: true, userInfo: {…}}
+          // => id님 로그인 성공 메세지
+          loginResult.textContent = `${response.data.userInfo.name}님 로그인 성공!!`
+          loginResult.classList.remove('error')
+          loginResult.classList.add('success')
+        } else {
+          // 로그인 실패 
+          // response.data => {isLogin: false}
+          // => 아이디 또는 패스워드 오류 메세지
+          loginResult.textContent = `아이디 또는 패스워드 오류!!`
+          loginResult.classList.remove('success')
+          loginResult.classList.add('error')
+        }
+      })
+    }
+  </script>
+</body>
+
 </html>
+
 
 
 
