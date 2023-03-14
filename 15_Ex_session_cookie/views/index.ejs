@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -31,7 +31,7 @@
           </div>
           <div class="modal-body">
             광고! <br> 쿠키 연습하기
-            <form name="cookieSet">
+            <form name="CookieSet">
               <input type="checkbox" id="myCheckbox" name="cookies" />
               <label id="myCheckbox">오늘 하루 보지않기</label>
             </form>
@@ -41,9 +41,9 @@
               type="button"
               class="btn btn-secondary"
               data-bs-dismiss="modal"
-              onclick="cookieSetter();"
+              onclick="CookieSetter();"
             >
-              Close
+              닫기
             </button>
           </div>
         </div>
@@ -61,7 +61,7 @@
         }
       });
       let checkbox = document.getElementById("myCheckbox");
-      const cookieSetter = () => {
+      const CookieSetter = () => {
         if (checkbox.checked) {
           axios({
             method: "GET",
@@ -73,8 +73,6 @@
           }).then((res) => {
             console.log(res.data);
           });
-        } else {
-          console.log("noooo");
         }
       };
     </script>

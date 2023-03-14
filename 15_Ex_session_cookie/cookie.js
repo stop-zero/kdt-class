@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = 9000;
+const PORT = 8000;
 
 app.set('view engine', 'ejs');
 app.use('/views', express.static(__dirname + '/views'))
@@ -57,9 +57,9 @@ app.get('/clearCookie', (req, res) => {
     // expires maxAge 옵션은 일치하지 않아도 괜찮음.
     res.clearCookie('my first cookie', 'cookie value', cookieConfig);
     // 클라이언트에게 응답 보내기
-    res.send('쿠키삭제완료 !')
+    res.send('쿠키삭제!')
 })
 
 app.listen(PORT, () => {
-    console.log(`run ${PORT}`)
+  console.log(`http://localhost:${PORT}`);
 })
