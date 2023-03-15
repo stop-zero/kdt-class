@@ -31,15 +31,19 @@
     <a href="/user/signup">Register</a>
 
     <script>
-      function login() {
+      //로그인 버튼 클릭시 서버에 로그인 요청하기 
+       async function login() {
         const form_login = document.forms['form_login'];
 
+        //유효성 검사 코드 
         if (!form_login.checkValidity()) {
           form_login.reportValidity();
           return;
         }
 
-        axios({
+        //const response = await axois({})
+      
+        await axios({
           method: 'POST',
           url: '/user/signin',
           data: {
@@ -47,6 +51,7 @@
             pw: form_login.pw.value,
           },
         })
+        //console.log(response);
           .then((res) => {
             return res.data;
           })
@@ -55,14 +60,16 @@
               // (1) alert 띄우기
               alert('로그인 성공 🥳');
               // (2) form_info 폼 선택
-              const form_info = document.forms['form_info'];
+              const form_info = document.forms['form_info'];  //숨겨진 폼 선택 
               // (3) form_login의 userid 값을 form_info의 userid value에 저장
               form_info.userid.value = form_login.userid.value;
               // (4) form_info 제출
-              form_info.submit();
+              form_info.submit(); //폼 제출 => button type="submint" 을 누른 것과 동일한 효과
+              // forms['form_info'] 요소의 action, method 속성 값에 의하여
+              // POST /user/profile 요청 수정할 수 있게 됨
             } else {
               alert('로그인 실패');
-              form_login.reset();
+              form.reset(); //로그인 폼 초기화
             }
           });
       }

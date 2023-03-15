@@ -25,15 +25,19 @@
     <script>
       // TODO: [Register] 버튼 클릭시 서버에 회원가입 요청하기
       // POST /user/signup
-      function register() {
+      //async await 사용
+      async function register() {
         const form = document.forms['form_register'];
 
+        //input에 값이 입력이 안된 경우
         if (!form.checkValidity()) {
-          form.reportValidity();
+          //!false = true 입력이 되었는지 안되었는지 검사
+          form.reportValidity(); //값이 입력되지 않으면 메시지 보여줌
           return;
         }
 
-        axios({
+        //데이터를 받아올 필요가 없으면 const =response awit axios 필요X
+         await axios({
           method: 'POST',
           url: '/user/signup',
           data: {
@@ -42,6 +46,7 @@
             name: form.name.value,
           },
         })
+        // console.log(response);
           .then((res) => {
             return res.data;
           })
@@ -50,6 +55,7 @@
             // 1. alert
             alert('회원가입 성공 🥳');
             // 2. 가입 성공시 로그인 페이지 이동
+            //doucument 객체는 FE에서만 사용 가능 
             document.location.href = '/user/signin';
           });
       }
