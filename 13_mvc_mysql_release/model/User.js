@@ -20,3 +20,47 @@ exports.post_signup = (data, cb) => {
     cb();
   });
 };
+
+//로그인, 한명만!
+exports.post_signin = (data, cb) => {
+  const sql = `SELECT * FROM user WHERE userid = '${data.userid}' and pw = '${data.pw}' LIMIT 1`;
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      throw err;
+    }
+
+    console.log(rows);
+    cb(rows);
+  });
+};
+
+//로그인한 유저 한 명 불러오기
+exports.post_profile = (userid, cb) => {
+  const sql = `SELECT * FROM user WHERE userid = '${userid}' LIMIT 1`;
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      throw err;
+    }
+    console.log('Model User: ', rows);
+    cb(rows);
+  });
+};
+
+exports.edit_profile = (data, cb) => {
+  const sql = `UPDATEE user SET userid = '${data.userid}', name = '${data.pw}' WHERE id'${data.id}'`;
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      throw err;
+    }
+    cb();
+  });
+};
+
+exports.delete_profile = (id, cb) =>{
+  conn.query(`DELETE FROM user WHERE id = '${id}'`, (err, rows)=>{
+    if(err){
+      throw err;
+    }
+    cb();
+  })
+}

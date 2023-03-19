@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <%- include('include/include', { title: '로그인' })%>
+  <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인</title>
+    <!-- axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <body>
     <h1>로그인</h1>
     <!-- 
@@ -21,12 +26,44 @@
     </form>
 
     <!-- TODO: href 속성값 설정하기 -->
-    <a href="#">Register</a>
+    <a href="/user/signup">Register</a>
 
     <script>
       // TODO: [Login] 버튼 클릭시 서버에 로그인 요청하기
       // POST /user/signin
-      function login() {}
+      function login() {
+        const form_login = document.forms['form_login'];
+
+        if(!form_login.checkValidity()){
+          form_login,reportValidity();
+          return;
+        }
+
+        axios({
+          mmethod: 'POST',
+          url: '/uesr/signin',
+          data: {
+            userid: form_login.userid.value,
+            pw: form_login.pw.value,
+          },
+        }).then((res)=>{
+          return res.data
+        }).then((data)=>{
+          console.log('post profile >> ', data);
+          if(data){
+            alert('로그인 성공');   
+
+            const form_info = document['form_info'];
+            form_info.userid.value = form_login.userid.value
+            form_info.submit()
+          }else{
+            alert('로그인 실패');
+
+            form_login.reset();
+          }
+        })
+
+      }
     </script>
   </body>
 </html>

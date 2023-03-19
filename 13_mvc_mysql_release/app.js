@@ -12,6 +12,11 @@ app.use(express.json());
 const userRouter = require('./routes/user');
 app.use('/user', userRouter);
 
+// 404 error
+app.get('*', (req, res) => {
+  res.render('404');
+});
+
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}/user`);
 });
