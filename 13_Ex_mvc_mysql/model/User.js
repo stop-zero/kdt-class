@@ -1,10 +1,11 @@
 const mysql = require('mysql');
 
 const conn = mysql.createConnection({
-  host: 'localhost',
-  user: 'user',
-  password: '1234',
-  database: 'kdt',
+  host: '127.0.0.1', //데이터베이스가 설치된 ip주소
+  user: 'user', //데이터베이스 접속 계정명
+  password: '1234', //데이터베이스 접속 비번
+  database: 'kdt', //사용할 데이터베이스 이름
+  port: '3306',
 });
 
 exports.post_signup = (data, cb) => {
