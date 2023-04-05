@@ -1,0 +1,73 @@
+.img-box {
+  width: 400px;
+  height: 250px;
+  background-color: blueviolet;
+}
+img {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border: 1px solid black;
+}
+img:hover {
+  /* 1. transform 이동 */
+  transform: translate(100px, 100px);
+  /* transform: translate(100px,0); */
+  transform: translateX(100px);
+  transform: translateY(100px);
+  /* transform: translate(0, 100px); */
+  transform: translateY(-100px);
+  transform: perspective(500px) translateZ(100px);
+  transform: perspective(500px) translate3d(0, 0, 100px);
+
+  /* scale 크기   */
+  /* 인자로 단위없는 수(배수) 가 들어감 
+    0~1까지 는 축소
+    1보다 크면 확대 */
+  transform: scale(2);
+  transform: scaleX(2);
+  transform: scaleY(0.5);
+
+  /* skew 기울임 */
+  transform: skew(45deg);
+  transform: skewX(45deg);
+  transform: skew(45deg, 45deg);
+
+  /* rotate 회전*/
+  transform: rotate(90deg);
+  transform: perspective(200px) rotateX(45deg);
+  transform: perspective(200px) rotateY(-45deg);
+  transform: perspective(200px) rotateY(180deg);
+  /* backface-visibility: hidden; */
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  /* display: inline; */
+  background-color: black;
+  transition-duration: 3s;
+  transition: 1s 2s;
+  margin: 10px;
+}
+
+.box1:hover {
+  background-color: pink;
+  height: 120px;
+  width: 120px;
+  /* transition
+    transition-duration 필수값 */
+  transition-duration: 1s;
+  transition-timing-function:ease;
+  transition-delay: 1s;
+}
+
+.box2:hover {
+    transform: translateX(200px) scaleX(2);
+    height: 120px;
+    /* transition: property, durgation(필수), function, delay; */
+    transition: height .5s ease 2s ;
+}
+.box3:hover {
+    opacity: 0;
+}

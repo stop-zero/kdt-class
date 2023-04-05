@@ -1,0 +1,7 @@
+@import url(./ex1_import.css);
+
+p{
+    background-color: red;
+    color: white;
+}
+

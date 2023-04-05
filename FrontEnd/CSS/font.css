@@ -1,0 +1,73 @@
+/* @import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap'); */
+/* font-family: 'East Sea Dokdo', cursive; */
+
+@font-face {
+    font-family: 'OAGothic-ExtraBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/OAGothic-ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LOTTERIADDAG';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/LOTTERIADDAG.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'RixMomsBlanketR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/RixMomsBlanketR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* @font-face {
+    font-family: 'HSBombaram21-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/HSBombaram21-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+} */
+
+body{
+ font-family: 'LOTTERIADDAG';
+}
+
+.sentences{
+    font-weight: 700;
+
+    /* text-align: center;
+    text-align: left;
+    text-align: right; */
+    
+    /* 가운데 중간줄 */
+    text-decoration:line-through ;
+
+    /* 밑줄 */
+    text-decoration: underline;
+
+    line-height: 2;
+    font-family: 'Nanum Pen Script', cursive;
+}
+    /* 링크 줄 없애기 */
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    /* font-family에 cursive 필수 / , , , 이게 없으면 그 다음 폰트 적용 */
+    .font-import{
+        font-family: 'East Sea Dokdo', 'LOTTERIADDAG', 'Nanum Pen Script', cursive;
+    }
+
+    .noonnu-font{
+         font-family: 'OAGothic-ExtraBold', 'LOTTERIADDAG', 'Nanum Pen Script', cursive;
+    }
+
+    .home{
+        font-family: 'RixMomsBlanketR', 'Nanum Pen Script', cursive;
+    }
+
+    .phone{
+        font-family: 'HSBombaram21-Regular', 'LOTTERIADDAG', 'Nanum Pen Script', cursive;
+    }

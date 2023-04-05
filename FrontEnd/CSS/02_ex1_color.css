@@ -1,0 +1,28 @@
+* {
+  /* 색깔 지정 방법 */
+  /* 1. 색깔 이름 써주면 됩니다. */
+  /* 2. rgb(  ,  ,  ) -> 0~255까지의 수를 써주면 됩니다. */
+  /* rgb (255,255, 255); -> white
+      +rgb(  ,  ,  )*/
+  /* 3. #~~~~ : 16진수로 이루어진 3개의 수를 연달아서 써주면 됩니다.
+    0, 1, 2, ~9 , a, b, c, d, e, f
+    #ffff : white */
+  color: white;
+  background-color: gray;
+}
+
+/* 
+body{
+  background-color: gray;
+}
+*/
+
+span {
+  background-color: red;
+}
+#first {
+  background-color: blue;
+}
+.second {
+  background-color: green;
+}

@@ -1,0 +1,9 @@
+@import url('./import.css');
+
+li{
+    background-color: coral;
+}
+
+p{
+    background-color: blueviolet;
+}

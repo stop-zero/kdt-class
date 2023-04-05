@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>border-style</title>
+    <style>
+      .square {
+        width: 100px;
+        height: 100px;
+        /* cursor: pointer;
+        border: 1px solid gray; */
+        border-radius: 15px 0px  45px;
+      }
+
+      .bottom {
+        border-bottom-style: double;
+        border-bottom-width: 2px;
+        border-bottom-color: blue;
+      }
+      .left {
+        border-left-style: dashed;
+        border-left-width: 5px;
+        border-left-color: red;
+        
+      }
+      .right {
+        border-right-style: solid;
+        border-right-width: 6px;
+        border-right-color: rgb(47, 68, 47);
+      }
+      .top {
+        border-top-style: dotted;
+        border-top-width: 3px;
+        border-top-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="square right">
+      <div class="square top">
+        <div class="square bottom">
+          <div class="square left"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
