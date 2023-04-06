@@ -39,7 +39,14 @@
           <td><%= data[i].name %></td>
           <td><%= data[i].comment %></td>
           <td><button type="button">수정</button></td>
-          <td><button type="button">삭제</button></td>
+          <td>
+            <button
+              type="button"
+              onclick="deleteVisitor(this, '<%= data[i].id %>')"
+            >
+              삭제
+            </button>
+          </td>
         </tr>
         <% } %>
       </tbody>
@@ -47,6 +54,35 @@
 
     <script>
       const tbody = document.querySelector('tbody');
+      function deleteVisitor(obj, id) {
+        console.log('obj', obj);
+        console.log('id', id); //선택한 id console 창에 뜸
+
+        //alert 는 확인 버튼만 confirm 은 확인 취소 버튼 (true, false)
+        if (!confirm('정말 삭제하시겠습니까?')) {
+          // !false = true(취소 버튼을 누르면)
+          return;
+        }
+
+        //확인버튼을 누르면 true, 실행할 코드
+        axios({
+          method: 'DELETE',
+          url: '/visitor/delete',
+          data: {
+            id: id, //매개변수로 받고 있는 id
+          },
+        }).then((res) => {
+          console.log(res.data);
+
+          //프론트앤드에서도 해당 행이 삭제될 수 있도록
+          //obj로 지금 요소가 뭔지 받아오고 있음 부모의 부모를 삭제
+          obj.parentElement.parentElement.remove();
+          //
+          // obj.closest('#tr_${id}').remove();
+        
+
+        });
+      }
 
       //폼에 있는 종목 버튼 클릭시
       // - 테이블 데이터 추가
@@ -69,8 +105,8 @@
             <td>${res.data.name}</td>
             <td>${res.data.comment}</td>
             <td><button type="button">수정</button></td>
-            <td><button type="button">삭제</button></td>
-            </tr>`;
+            <td><button type="button" onclick="deleteVisitor(this, ${res.data.id})">삭제</button></td>
+          </tr>`;
 
           //insertAdjacentHTML() 특정 요소에 html 추가
           // vs. innerHTML : 내부 코드를 덮어씌움
@@ -80,4 +116,3 @@
     </script>
   </body>
 </html>
-
