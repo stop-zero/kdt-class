@@ -8,24 +8,40 @@
 const mysql = require('mysql');
 
 const conn = mysql.createConnection({
-    host: '127.0.0.1', //데이터베이스가 설치된 ip주소
-    user: 'user', //데이터베이스 접속 계정명
-    password: '1234',   //데이터베이스 접속 비번
-    database: 'visitor', //사용할 데이터베이스 이름
-    port: '3306'
+  host: '127.0.0.1', //데이터베이스가 설치된 ip주소
+  user: 'user', //데이터베이스 접속 계정명
+  password: '1234', //데이터베이스 접속 비번
+  database: 'visitor', //사용할 데이터베이스 이름
+  port: '3306',
 });
 
-exports.getVisitors = (callback)=>{
-    //conn.query(sql, callback ) => conn에 저장되어 있는 데이터베이스 접근해서 sql문 실행
-    // => 결과물 callback 함수에 넘겨줌
-    const sql = "SELECT * FROM visitor;"
-    
-    conn.query(sql, (err, rows) =>{
-        if(err){
-            throw err
-        }
+exports.getVisitors = (callback) => {
+  //conn.query(sql, callback )
+  // => conn에 저장되어 있는 데이터베이스 접근해서 sql문 실행
+  // => 결과물 callback 함수에 넘겨줌
+  const sql = 'SELECT * FROM visitor;';
 
-        console.log('Visitor.js >>', rows);
-        callback(rows);
-    })
-}
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      throw err;
+    }
+
+    console.log('Visitor.js >>', rows);
+    // => [{},{},{},{}]
+    callback(rows);
+  });
+};
+
+exports.postVisitor = (data, callback) => {
+  console.log(data); // controller에서 넘겨주고 있는 클라이언트에서 보내주는 폼 값 (req.body)
+
+  const sql = `insert into visitor(name, comment) values('${data.name}', '${data.comment}');`;
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      throw err;
+    }
+
+    console.log('Visitor.js: ', rows.insertId);
+    callback(rows.insertId);
+  });
+};
