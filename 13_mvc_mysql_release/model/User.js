@@ -21,15 +21,14 @@ exports.post_signup = (data, cb) => {
   });
 };
 
-//로그인, 한명만!
+//로그인
 exports.post_signin = (data, cb) => {
-  const sql = `SELECT * FROM user WHERE userid = '${data.userid}' and pw = '${data.pw}' LIMIT 1`;
+  const sql = `SELECT * FROM user WHERE userid = '${data.userid}' and pw = '${data.pw}'`;
   conn.query(sql, (err, rows) => {
     if (err) {
       throw err;
+    
     }
-
-    console.log(rows);
     cb(rows);
   });
 };
@@ -46,8 +45,9 @@ exports.post_profile = (userid, cb) => {
   });
 };
 
+//수정
 exports.edit_profile = (data, cb) => {
-  const sql = `UPDATEE user SET userid = '${data.userid}', name = '${data.pw}' WHERE id'${data.id}'`;
+  const sql = `UPDATE user SET userid = '${data.userid}', name = '${data.name}', pw = '${data.pw}' WHERE id='${data.id}'`;
   conn.query(sql, (err, rows) => {
     if (err) {
       throw err;
@@ -56,11 +56,11 @@ exports.edit_profile = (data, cb) => {
   });
 };
 
-exports.delete_profile = (id, cb) =>{
-  conn.query(`DELETE FROM user WHERE id = '${id}'`, (err, rows)=>{
-    if(err){
+exports.delete_profile = (id, cb) => {
+  conn.query(`DELETE FROM user WHERE id = '${id}'`, (err, rows) => {
+    if (err) {
       throw err;
     }
     cb();
-  })
-}
+  });
+};

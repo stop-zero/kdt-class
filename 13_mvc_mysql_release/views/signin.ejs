@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <meta charset="UTF-8" />
+  <head>
+    <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>로그인</title>
     <!-- axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
   <body>
     <h1>로그인</h1>
     <!-- 
-      [로그인] 버튼을 클릭하면 profile.ejs에서 특정 유저 정보를 보여주어야 하기 때문에 
+      [로그인] 버튼을 클릭하면 profile.ejs(회원정보 수정 페이지)에서 
+      특정 유저 정보를 보여주어야 하기 때문에 
       userid 정보를 value에 저장(POST /user/signin 요청의 응답을 받은 후 수행)하여
       폼(input)이 보이지 않도록 hidden 처리함
     -->
@@ -25,44 +28,43 @@
       <button type="button" onclick="login();">Login</button>
     </form>
 
-    <!-- TODO: href 속성값 설정하기 -->
     <a href="/user/signup">Register</a>
 
     <script>
-      // TODO: [Login] 버튼 클릭시 서버에 로그인 요청하기
-      // POST /user/signin
       function login() {
         const form_login = document.forms['form_login'];
 
-        if(!form_login.checkValidity()){
-          form_login,reportValidity();
+        if (!form_login.checkValidity()) {
+          form_login.reportValidity();
           return;
         }
 
         axios({
-          mmethod: 'POST',
-          url: '/uesr/signin',
+          method: 'POST',
+          url: '/user/signin',
           data: {
             userid: form_login.userid.value,
             pw: form_login.pw.value,
           },
-        }).then((res)=>{
-          return res.data
-        }).then((data)=>{
-          console.log('post profile >> ', data);
-          if(data){
-            alert('로그인 성공');   
-
-            const form_info = document['form_info'];
-            form_info.userid.value = form_login.userid.value
-            form_info.submit()
-          }else{
-            alert('로그인 실패');
-
-            form_login.reset();
-          }
         })
-
+          .then((res) => {
+            return res.data;
+          })
+          .then((data) => {
+            if (data) {
+              // (1) alert 띄우기
+              alert('로그인 성공 🥳');
+              // (2) form_info 폼 선택
+              const form_info = document.forms['form_info'];
+              // (3) form_login의 userid 값을 form_info의 userid value에 저장
+              form_info.userid.value = form_login.userid.value;
+              // (4) form_info 제출
+              form_info.submit();
+            } else {
+              alert('로그인 실패');
+              form_login.reset();
+            }
+          });
       }
     </script>
   </body>
