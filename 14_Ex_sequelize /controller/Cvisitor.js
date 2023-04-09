@@ -46,7 +46,7 @@ exports.postVisitor = async (req, res) => {
 
   // [after]
   const result = await models.Visitor.create({
-    name: req.body.name,
+    name: req.body.name,       
     comment: req.body.comment,
   });
   console.log('create >> ', result);

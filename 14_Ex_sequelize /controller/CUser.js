@@ -9,16 +9,17 @@ exports.signup = (req, res) => {
   res.render('signup');
 };
 
-exports.post_signup = async (req, res) => {
-  const result = await models.User.create({
-    userid: req.body.userid,
-    name: req.body.name,
-    pw: req.body.pw,
-  });
-  res.send(result);
+exports.post_signup = (req, res) => {
   // User.post_signup(req.body, () => {
   //   res.send(true);
   // });
+  models.User.create({
+    userid: req.body.userid,
+    name: req.body.name,
+    pw: req.body.pw,
+  }).then(() => {
+    res.send(true);
+  });
 };
 
 exports.signin = (req, res) => {
@@ -26,7 +27,7 @@ exports.signin = (req, res) => {
 };
 
 //로그인
-exports.post_signin = async (req, res) => {
+exports.post_signin = (req, res) => {
   // console.log(req.body); //폼에 입력한 로그인 정보
   // User.post_signin(req.body, (result) => {
   //   console.log(result);
@@ -39,13 +40,20 @@ exports.post_signin = async (req, res) => {
   //     res.send(false);
   //   }
   // });
-  const result = await models.User.findOne({
-    where: { userid: req.query.userid, pw:req.query.pw },
+  models.User.findOne({
+    where: { userid: req.query.userid, pw: req.query.pw },
+  }).then((result) => {
+    if (result.length > 0) {
+      // 존재하는 유저로 로그인 [{}]
+      res.send(true);
+    } else {
+      // 존재하지 않는 유저로 로그인 []
+      res.send(false);
+    }
   });
-  res.send(result);
 };
 
-exports.post_profile = async (req, res) => {
+exports.post_profile = (req, res) => {
   // console.log(req.body); //singin.ejs => form_info.userid.value = form_login.userid.value;
 
   // User.post_profile(req.body.userid, (result) => {
@@ -59,9 +67,15 @@ exports.post_profile = async (req, res) => {
   //   }
   // });
 
-  const result = await models.User.findAll();
-  console.log('post_profile >> ', result);
-  res.render('user', { data: result });
+  models.User.findAll({
+    where: { userid: req.body.userid },
+  }).then((result) => {
+    if (result.length > 0) {
+      res.render('profile', { data: result[0] });
+    } else {
+      res.redirect('/user/signin');
+    }
+  });
 };
 
 exports.edit_profile = async (req, res) => {
@@ -91,6 +105,7 @@ exports.delete_profile = async (req, res) => {
   // });
   await models.User.destroy({
     where: { id: req.body.id },
-  });
+  }
+  );
   res.end();
 };
