@@ -1,4 +1,4 @@
-// TODO: 라우트 설정
+// 회원가입 / 로그인 관련 라우터 설정
 const express = require('express');
 const controller = require('../controller/Cuser');
 const router = express.Router();
@@ -6,7 +6,7 @@ const router = express.Router();
 //기본 주소 : localhost:PORT/user
 
 //localhost:PORT/user
-router.get('/', controller.index);
+// router.get('/', controller.index);
 
 //localhost:PORT/user/signup
 router.get('/signup', controller.signup);

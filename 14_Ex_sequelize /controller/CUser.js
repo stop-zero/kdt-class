@@ -1,25 +1,19 @@
-const { query } = require('express');
 const models = require('../models');
-
-exports.index = (req, res) => {
-  res.render('index');
-};
 
 exports.signup = (req, res) => {
   res.render('signup');
 };
 
-exports.post_signup = (req, res) => {
+exports.post_signup = async (req, res) => {
   // User.post_signup(req.body, () => {
   //   res.send(true);
   // });
-  models.User.create({
+  await models.User.create({
     userid: req.body.userid,
     name: req.body.name,
     pw: req.body.pw,
-  }).then(() => {
-    res.send(true);
   });
+  res.end();
 };
 
 exports.signin = (req, res) => {
@@ -27,7 +21,7 @@ exports.signin = (req, res) => {
 };
 
 //로그인
-exports.post_signin = (req, res) => {
+exports.post_signin = async (req, res) => {
   // console.log(req.body); //폼에 입력한 로그인 정보
   // User.post_signin(req.body, (result) => {
   //   console.log(result);
@@ -40,20 +34,39 @@ exports.post_signin = (req, res) => {
   //     res.send(false);
   //   }
   // });
-  models.User.findOne({
-    where: { userid: req.query.userid, pw: req.query.pw },
-  }).then((result) => {
-    if (result.length > 0) {
-      // 존재하는 유저로 로그인 [{}]
-      res.send(true);
-    } else {
-      // 존재하지 않는 유저로 로그인 []
-      res.send(false);
-    }
+
+  const result = await models.User.findOne({
+    where: {
+      userid: req.body.userid,
+      pw: req.body.pw,
+    },
   });
+  console.log('>>>>>> ', result);
+  // 로그인 성공; result = {}
+  // 로그인 실패; result = null
+
+  if (result) {
+    res.send(true);
+  } else {
+    res.send(false);
+  }
+
+  //내가 잘못친 코드 
+  // const result = await models.User.findOne({
+  //   where: { userid: req.body.userid, pw: req.body.pw },
+  // });
+  // if (result.length > 0) {
+  //   //로그인 성공; result = {}
+    
+  //   res.send(true);
+  // } else {
+  //   //로그인 실패; result = null;
+  //   res.send(false);
+  // }
+
 };
 
-exports.post_profile = (req, res) => {
+exports.post_profile = async(req, res) => {
   // console.log(req.body); //singin.ejs => form_info.userid.value = form_login.userid.value;
 
   // User.post_profile(req.body.userid, (result) => {
@@ -67,15 +80,13 @@ exports.post_profile = (req, res) => {
   //   }
   // });
 
-  models.User.findAll({
+  const result = await models.User.findOne({
     where: { userid: req.body.userid },
-  }).then((result) => {
-    if (result.length > 0) {
-      res.render('profile', { data: result[0] });
-    } else {
-      res.redirect('/user/signin');
-    }
   });
+  console.log(" >>>> ", result);
+    if (result) {     //
+      res.render('profile', { data: result });
+    } 
 };
 
 exports.edit_profile = async (req, res) => {
@@ -83,7 +94,7 @@ exports.edit_profile = async (req, res) => {
   // User.edit_profile(req.body, () => {
   //   res.send('회원정보 수정 성공');
   // });
-  const result = await models.User.update(
+  await models.User.update(
     {
       userid: req.body.userid,
       name: req.body.name,
@@ -95,7 +106,7 @@ exports.edit_profile = async (req, res) => {
       },
     }
   );
-  console.log('update>> ', result);
+  // console.log('update>> ', result);
   res.send('회원 정보 수정 성공');
 };
 
@@ -105,7 +116,6 @@ exports.delete_profile = async (req, res) => {
   // });
   await models.User.destroy({
     where: { id: req.body.id },
-  }
-  );
+  });
   res.end();
 };

@@ -1,5 +1,6 @@
 // models/index.js
 // sequelize-cli 자동 생성한 코드
+'use strict';
 
 // sequelize 모듈 불러오기
 const Sequelize = require('sequelize');

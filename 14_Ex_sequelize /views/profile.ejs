@@ -64,7 +64,7 @@
             name: form.name.value,
           },
         })
-        //console.log(response);
+          //console.log(response);
           .then((res) => {
             return res.data;
           })
@@ -74,13 +74,12 @@
       }
 
       // POST /user/profile/delete
-     async function profileDelete() {
+      async function profileDelete() {
         const form = document.forms['form_profile'];
         // if (!form.checkValidity()) {
         //   form.reportValidity();
         //   return;
         // }
-
         await axios({
           method: 'POST',
           url: '/user/profile/delete',
@@ -95,7 +94,7 @@
             // (1) alert 띄우기
             alert('회원 탈퇴 성공');
             // (2) 회원 탈퇴시 /user 경로로 이동
-            document.location.href = '/user';
+            document.location.href = '/';
           });
       }
     </script>
