@@ -1,0 +1,19 @@
+.chat-list {
+  background-color: black;
+  color: white;
+  width: 20rem;
+  height: 40rem;
+  margin: 5px;
+  /* display: flex; */
+}
+
+.my-chat {
+  background-color: rgba(255, 127, 80, 0.773);
+  text-align: end;
+ 
+}
+
+.other-chat {
+  background-color: rgba(143, 188, 143, 0.755);
+
+}
