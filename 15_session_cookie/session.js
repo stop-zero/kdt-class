@@ -51,7 +51,7 @@ app.get('/set', (req, res)=>{
 app.get('/name', (req, res)=>{
     // 세션 읽기(사용)
     // req.session.키
-    // req.sessionID : 현재 세션의 id (서버가 클라이언트를 구별하기 위해 부여한느 고유 값)
+    // req.sessionID : 현재 세션의 id (서버가 클라이언트를 구별하기 위해 부여하는 고유 값)
     // -> 브라우저 단위로 다른 값을 가짐.
 
     res.send({
