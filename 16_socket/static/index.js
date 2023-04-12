@@ -5,7 +5,9 @@ let socket = io.connect();
 
 socket.on('connect', () => {
   console.log('⭕️ Client Socket Connected >> ', socket.id);
+ 
 });
+
 
 // [실습1]
 function sayHello() {
@@ -40,12 +42,7 @@ function sayBye() {
   });
 }
 
-function text() {
-    socket.emit('mychat', { who: 'client', msg: 'test' });
-  
-    socket.on('mychat', (data) => {
-      const p = document.querySelector('#my-chat');
-      p.textContent = `${data.who} : ${data.msg}`;
-    });
-  }
 
+
+
+  

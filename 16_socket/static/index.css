@@ -1,19 +1,42 @@
+@font-face {
+  font-family: 'GangwonEdu_OTFBoldA';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'GangwonEdu_OTFBoldA';
+}
+
 .chat-list {
-  background-color: black;
-  color: white;
-  width: 20rem;
-  height: 40rem;
-  margin: 5px;
-  /* display: flex; */
+  background-color: rgb(25, 25, 25);
+  width: 30%;
+  height: 500px;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.chat-list div div {
+  display: inline-block;
+  padding: 3px;
+}
+
+.chat-list div {
+  margin-top: 3px;
+}
+
+.my-chat div {
+  background-color: rgb(238, 122, 120);
 }
 
 .my-chat {
-  background-color: rgba(255, 127, 80, 0.773);
-  text-align: end;
- 
+  text-align: right;
 }
 
-.other-chat {
-  background-color: rgba(143, 188, 143, 0.755);
-
+.other-chat div{
+  background-color: rgba(150, 203, 255);
 }
+
+

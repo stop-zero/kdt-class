@@ -43,13 +43,6 @@ io.on('connection', (socket) => {
     // server -> client 보낼 때
     socket.emit('byeKr', { who: 'bye', msg: '잘가👋' });
   });
-  
-  socket.on('server-chat', (data) => {
-    console.log(`${data.who} : ${data.msg}`);
-    // server -> client 보낼 때
-    socket.emit('server', { who: 'server-chat', msg: 'text' });
-  });
-
 });
 
 // 주의) socket 을 사용할 때는 http.listen으로 PORT 열어야 함!!!
