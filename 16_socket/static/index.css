@@ -18,25 +18,33 @@ body {
   overflow-y: auto;
 }
 
-.chat-list div div {
-  display: inline-block;
-  padding: 3px;
-}
-
 .chat-list div {
   margin-top: 3px;
 }
 
-.my-chat div {
-  background-color: rgb(238, 122, 120);
+.chat-list div div {
+  display: inline-block;
+  padding: 3px;
 }
 
 .my-chat {
   text-align: right;
 }
 
-.other-chat div{
+.my-chat div {
+  background-color: rgb(238, 122, 120);
+}
+
+.other-chat div {
   background-color: rgba(150, 203, 255);
 }
 
+.notice {
+  color: gray;
+  text-align: center;
+  font-size: 12px;
+}
 
+.d-none {
+  display: none;
+}
