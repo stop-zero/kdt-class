@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- fontawesome -->
+    <script
+      src="https://kit.fontawesome.com/035c90ce67.js"
+      crossorigin="anonymous"
+    ></script>
     <script
       src="https://cdn.socket.io/4.6.0/socket.io.min.js"
       integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
@@ -14,34 +19,60 @@
   </head>
   <body>
     <h2 id="title">채팅</h2>
-    
-    <!--  [실습 3-2] 채팅창 입장 안내 문구 socket.id -> nickname -->
     <div class="entry-box">
-      <input type="text" id="nickname" placeholder="Nickname" autofocus>
+      <input type="text" id="nickname" placeholder="Nickname" autofocus />
       <button type="button" onclick="entry();">입장</button>
     </div>
-    <div class="chat-box d-none">
-      <div id="chat-list" class="chat-list">
-        <!--  임시 대화 데이터 -->
-        <!-- <div class="my-chat">
-          <div>user1: msg1</div>
+    <!-- side-bar : home / 입장한 nick 목록 -->
+    <div class="box">
+      <div class="side-bar">
+        <div>
+          <a href="/"
+            ><i class="fa-solid fa-magnifying-glass" style="color: gray"></i
+          ></a>
         </div>
-        <div class="other-chat">
-          <div>user2: msg2</div>
-        </div> -->
+        <br />
+        <div class="people">
+          <i class="fa-solid fa-code" style="color: gray"></i>
+        </div>
       </div>
-      <select id="nick-list"></select
-      >에게
-      <input type="text" id="message" />
-      <button type="button" onclick="send()">전송</button>
-      <!-- todo : enter 눌러도 전송되도록 -->
+
+      <!--  [실습 3-2] 채팅창 입장 안내 문구 socket.id -> nickname -->
+      <!-- <div class="entry-box">
+     <input type="text" id="nickname" placeholder="Nickname" autofocus>
+     <button type="button" onclick="entry();">입장</button>
+   </div> -->
+      <!-- <div class="chat-box d-none"> -->
+      <div class="chat-box ">
+        <div id="chat-list" class="chat-list">
+          <!-- <div class="number">
+         <p>1</p>
+         <p>2</p>
+       </div> -->
+          <!--  임시 대화 데이터 -->
+          <!-- <div class="my-chat">
+         <div>user1: msg1</div>
+       </div>
+       <div class="other-chat">
+         <div>user2: msg2</div>
+       </div> -->
+        </div>
+
+        <div class="input">
+          <select id="nick-list"></select
+          >에게
+          <input type="text" id="message" />
+          <button type="button" onclick="send()">전송</button>
+          <!-- enter 눌러도 전송되도록 -->
+        </div>
+      </div>
     </div>
 
     <!-- [실습1] 각 버튼을 누를 때 마다 서버로 메세지 보내기 -->
     <!-- <button onclick="sayHello()">hello</button>
     <button onclick="sayStudy()">study</button>
     <button onclick="sayBye()">bye</button>
-    <p id="form-server"></p> --> 
+    <p id="form-server"></p> -->
 
     <script src="/static/index.js"></script>
   </body>
