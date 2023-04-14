@@ -6,6 +6,7 @@ let socket = io.connect();
 // 나의 닉네임
 let myNick;
 
+// msg count number
 let msgCounter = 1;
 
 socket.on('connect', () => {
@@ -79,7 +80,7 @@ socket.on('updateNicks', (obj) => {
 // "send" 이벤트 전송 { 닉네임, 입력메세지 }
 function send() {
   const data = {
-    msgCounter: msgCounter,
+    msgCounter: msgCounter++,
     myNick: myNick,
     dm: document.querySelector('#nick-list').value,
     // => select 태그에서 선택한 option 태그의 value 값
@@ -87,7 +88,7 @@ function send() {
   };
 
   // 메시지 번호 카운터 증가
-  msgCounter++;
+  // msgCounter++;
 
   socket.emit('send', data);
 
@@ -118,6 +119,12 @@ socket.on('newMessage', (data) => {
   // 가장 안쪽 div 요소 생성
   let divChat = document.createElement('div');
 
+  //msgCounter
+  let divNum = document.createElement('div');
+
+  //메세지가 생성될 때마다 줄에 번호가 입력되도록.
+  let num = div.classList.add('msgCounter');
+
   // 미션!!
   // 새 메세지가 도착했는데, myNick에 저장된 현재 내 닉네임과
   // data 의 닉네임이 같다면, 내 채팅으로 보이게 (오른쪽 배치 == .my-chat)
@@ -130,6 +137,9 @@ socket.on('newMessage', (data) => {
 
   // [실습5] DM 기능 추가
   if (data.dm) {
+    //메세지가 생성될 때마다 줄에 번호가 입력되도록.
+    // div.classList.add('msgCounter');
+    // divNum.textContent = data.dm;
     // data.dm -> '(속닥속닥) '
     div.classList.add('secret-chat');
     divChat.textContent = data.dm; // divChat 요소에 (속닥속닥) 글자를 추가
@@ -138,7 +148,7 @@ socket.on('newMessage', (data) => {
   // divChat의 textContent/innerText 값을 적질히 변경
   // ex. nick : msg 형태로 보이게 했음
   // divChat.textContent = `${data.nick} : ${data.msg}`; // [실습4]
-  divChat.textContent = divChat.textContent + `${data.msgCounter}, ${data.nick} : ${data.msg}`; // [실습5]
+  divChat.textContent = divChat.textContent + `${data.nick} : ${data.msg}`; // [실습5]
   // dm; divChat.textContent = '(속닥속닥) ' + 누가 : 메세지
   // not dm; divChat.textContet = '' + 누가 : 메세지
 
@@ -146,6 +156,14 @@ socket.on('newMessage', (data) => {
   div.append(divChat);
   // div를 chatList 에 추가
   chatList.append(div);
+
+  //생성될 때마다 값을 출력.
+  let msgCounter = document.getElementsByClassName('msgCounter').length;
+  console.log('msgCounter >> ', msgCounter);
+  divNum.textContent = divNum.textContent + `${msgCounter}`;
+  //
+  chatList.append(divNum);
+ 
 
   // (선택) 메세지가 많아져서 스크롤이 생기더라도 하단 고정
   chatList.scrollTop = chatList.scrollHeight;
