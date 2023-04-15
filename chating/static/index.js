@@ -9,8 +9,6 @@ let myNick;
 // msg count number
 // let msgCounter = 1;
 
-
-
 // 메시지 전송 시간
 const time = new Date().toLocaleString();
 
@@ -57,7 +55,7 @@ function entry() {
     // input에 입력된 길이가 0이면 그냥 함수 종료
     return;
   }
-  //nickname 공백 X
+
   socket.emit('setNick', document.querySelector('#nickname').value);
 }
 
@@ -111,7 +109,6 @@ function send() {
     // 메시지 전송 시간
     time: time,
   };
-
   console.log('>>>', data);
 
   //공백 문자
@@ -121,7 +118,6 @@ function send() {
   }
 
   document.querySelector('#message').value = ''; // 인풋 초기화
-
 }
 
 // [실습4] 채팅창 메세지 전송 Step2
@@ -153,7 +149,6 @@ socket.on('newMessage', (data) => {
   let divtime = document.createElement('div');
 
   let time = div.classList.add('time');
-
 
   // 미션!!
   // 새 메세지가 도착했는데, myNick에 저장된 현재 내 닉네임과

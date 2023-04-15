@@ -89,7 +89,16 @@ io.on('connection', (socket) => {
     updateNickList();
   });
 
-  
+  //추가 : msgCounter
+  // socket.on('msgCounter', () => {
+  //   console.log('msgCounter >> ', msgCounter);
+
+  //   // 메시지 번호 카운터 증가
+  //    msgCounter++;
+
+  //   io.emit('msgNotice', `${obj.msgCounter}`);
+
+  // });
 
   // [실습4] 채팅창 메세지 전송 Step1
   socket.on('send', (obj) => {
@@ -122,7 +131,7 @@ io.on('connection', (socket) => {
         msg: obj.msg,
         time: obj.time,
       };
-      console.log(sendData);
+      console.log('***', sendData);
       // 1. dm을 보내고자하는 그 socket.id 한테 메세지 전송
       io.to(dmSocketId).emit('newMessage', sendData);
       // 2. dm을 보내고 있는 자기자신 메세지 전송
@@ -131,6 +140,7 @@ io.on('connection', (socket) => {
       // all 전송 (전체 공지)
       const sendData = {
         msgCounter: msgCounter++,
+        // msgCounter: obj.msgCounter,
         nick: obj.myNick,
         msg: obj.msg,
         time: time,
