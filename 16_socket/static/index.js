@@ -9,7 +9,17 @@ let myNick;
 // msg count number
 // let msgCounter = 1;
 
+function enterkey() {
+  if (window.event.keyCode == 13) {
+    send();
+  }
+}
 
+function enterkey2() {
+  if (window.event.keyCode == 13) {
+    entry();
+  }
+}
 
 // 메시지 전송 시간
 const time = new Date().toLocaleString();
@@ -121,7 +131,6 @@ function send() {
   }
 
   document.querySelector('#message').value = ''; // 인풋 초기화
-
 }
 
 // [실습4] 채팅창 메세지 전송 Step2
@@ -153,7 +162,6 @@ socket.on('newMessage', (data) => {
   let divtime = document.createElement('div');
 
   let time = div.classList.add('time');
-
 
   // 미션!!
   // 새 메세지가 도착했는데, myNick에 저장된 현재 내 닉네임과
@@ -200,4 +208,6 @@ socket.on('newMessage', (data) => {
 
   // (선택) 메세지가 많아져서 스크롤이 생기더라도 하단 고정
   chatList.scrollTop = chatList.scrollHeight;
+
+    notice.scrollTop = notice.scrollHeight;
 });

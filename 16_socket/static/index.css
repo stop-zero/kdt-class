@@ -8,20 +8,18 @@
 
 body {
   font-family: 'GangwonEdu_OTFBoldA';
-  color: gray; 
+  background-color: black;
+  color: gray;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
-.all{
+.all {
   background-color: rgb(35, 35, 35);
-  width: 50%;
-}
-
-.chat-box{
-/* display: flex; */
+  border-radius: 10px;
+  width: 90%;
 }
 
 .chat-list {
@@ -44,12 +42,11 @@ body {
 .my-chat {
   text-align: right;
   display: flex;
-  justify-content: space-between
+  justify-content: space-between;
 }
 
 .my-chat div {
   color: rgb(240, 118, 89);
-  
 }
 
 .other-chat div {
@@ -72,34 +69,80 @@ body {
 }
 
 .input {
-  padding: 5px;
-}
-.msg-box{
+  height: 5vh;
+  margin: 10px;
   display: flex;
+  justify-content: space-between;
+}
+
+.input p {
+  line-height: 5vh;
+  text-align: left;
+}
+
+.msg-box {
   width: 100%;
 }
 
-divnum{
+divnum {
   margin-right: 5px;
 }
 
-.my-chat-time{
+.my-chat-time {
   text-align: right;
   font-size: 0.8rem;
 }
-.other-chat-time{
+.other-chat-time {
   margin-left: 1rem;
   font-size: 0.8rem;
 }
 
-
-.btn-pass{
-  display: flex;
-  justify-content: flex-end;
-  margin-left: 93%;
-  /* margin-top: 7px; */
+#message {
+  width: 85%;
+  height: 5vh;
+  font-size: 1rem;
+  border-radius: 10px;
 }
 
-#message{
-  margin: 5px;
+.navbar {
+  border-radius: 5px;
+}
+
+#nick-list {
+  width: 4rem;
+  height: 2.5rem;
+  border-radius: 10px;
+}
+
+btn-pass {
+  width: 10%;
+}
+
+/* input ui 변경 시점 width: 1067 */
+@media screen and (max-width: 1067px) {
+  * {
+    font-size: 0.7rem;
+  }
+  .input {
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nick-list {
+    line-height: 5vh;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .input p {
+    display: none;
+  }
+}
+
+/* 반응형 iphone 12 pro 기준 */
+@media screen and (max-width: 390px) {
+  * {
+    font-size: smaller;
+  }
 }

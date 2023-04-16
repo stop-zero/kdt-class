@@ -89,8 +89,6 @@ io.on('connection', (socket) => {
     updateNickList();
   });
 
-  
-
   // [실습4] 채팅창 메세지 전송 Step1
   socket.on('send', (obj) => {
     console.log('socket on send >> ', obj); // { myNick: 'ㅁㅁ', dm: '', msg: '안녕' }
