@@ -21,15 +21,12 @@ function enterkey2() {
   }
 }
 
-
-
 // 메시지 전송 시간
 const currentDate = new Date();
-const hours = String(currentDate.getHours()).padStart(2, "0");
-const minutes = String(currentDate.getMinutes()).padStart(2, "0");
+const hours = String(currentDate.getHours()).padStart(2, '0');
+const minutes = String(currentDate.getMinutes()).padStart(2, '0');
 
-const time= `${hours}:${minutes}`;
-
+const time = `${hours}:${minutes}`;
 
 socket.on('connect', () => {
   console.log('⭕️ Client Socket Connected >> ', socket.id);
@@ -50,11 +47,11 @@ socket.on('connect', () => {
 //   });
 // }
 
-// 대화방 날짜 
- socket.on("date", (formattedDate) => {
-      const dateDisplay = document.getElementById("date-display");
-      dateDisplay.textContent = `${formattedDate}`;
-    });
+// 대화방 날짜
+socket.on('date', (Date) => {
+  const date = document.getElementById('date');
+  date.textContent = `${Date}`;
+});
 
 // [실습3] 채팅창 입장/퇴장 안내 문구
 socket.on('notice', (msg) => {

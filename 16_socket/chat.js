@@ -54,16 +54,14 @@ io.on('connection', (socket) => {
   // [실습3] 채팅장 입장 안내 문구
   // io.emit('notice', `${socket.id.slice(0, 5)}님이 입장하셨습니다.`);
 
+  // 현재 날짜를 클라이언트에게 전송
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+  const day = String(currentDate.getDate()).padStart(2, '0');
+  const date = `${year}년 ${month}월 ${day}일`;
 
-    // 현재 날짜를 클라이언트에게 전송
-    const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = String(currentDate.getMonth() + 1).padStart(2, "0");
-    const day = String(currentDate.getDate()).padStart(2, "0");
-    const date = `${year}년 ${month}월 ${day}일`;
-  
-    socket.emit("date", date);
-
+  socket.emit('date', date);
 
   // [실습3-2] 채팅창 입장 안내 문구 socket.id -> nickname
   socket.on('setNick', (nick) => {

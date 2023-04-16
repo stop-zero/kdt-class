@@ -34,7 +34,13 @@
       <nav class="navbar navbar-dark bg-dark">
         <div class="container">
           <div class="entry-box">
-            <input type="text" id="nickname" placeholder="Nickname" onkeyup="enterkey2()" autofocus/>
+            <input
+              type="text"
+              id="nickname"
+              placeholder="Nickname"
+              onkeyup="enterkey2()"
+              autofocus
+            />
             <button
               type="button"
               class="btn btn-outline-secondary"
@@ -109,7 +115,7 @@
                           - 보낸 시간 <br />
                           - 채팅 라인 수 확인<br />
                           - 대화 상대 목록<br />
-                          - 공백 입력 X <br/>
+                          - 공백 입력 X <br />
                           - enter 입력
                         </div>
                       </div>
@@ -120,15 +126,13 @@
                 <li class="nav-item dropdown">
                   <a
                     class="nav-link dropdown-toggle"
-                    href="#"
                     role="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
                     대화 상대
                   </a>
-                  <ul class="dropdown-menu dropdown-menu-dark">
-                  </ul>
+                  <ul class="dropdown-menu dropdown-menu-dark"></ul>
                 </li>
               </ul>
             </div>
@@ -144,27 +148,28 @@
           ß </div> -->
         <!-- <div class="chat-box d-none"> -->
         <div class="chat-box d-none">
-          <h5 id="date-display"></h5>
-          <div id="chat-list" class="chat-list">
-
-          </div>
+          <h5 id="date"></h5>
+          <div id="chat-list" class="chat-list"></div>
 
           <div class="number-list"></div>
 
           <!-- <div class="msg-list"></div> -->
 
           <div class="input">
-            <select id="nick-list">
-            </select> 
+            <select id="nick-list"></select>
             <p>에게</p>
             <input
               type="text"
               id="message"
-              placeholder="메세지를 작성해주세요." onkeyup="enterkey()" />
+              placeholder="메세지를 작성해주세요."
+              onkeyup="enterkey()"
+            />
             <button
-              type="button" id="msg-btn"
+              type="button"
+              id="msg-btn"
               class="btn btn-pass pass-btn btn-outline-secondary"
-              onclick="send()">
+              onclick="send()"
+            >
               전송
             </button>
           </div>
