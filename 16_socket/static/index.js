@@ -21,8 +21,15 @@ function enterkey2() {
   }
 }
 
+
+
 // 메시지 전송 시간
-const time = new Date().toLocaleString();
+const currentDate = new Date();
+const hours = String(currentDate.getHours()).padStart(2, "0");
+const minutes = String(currentDate.getMinutes()).padStart(2, "0");
+
+const time= `${hours}:${minutes}`;
+
 
 socket.on('connect', () => {
   console.log('⭕️ Client Socket Connected >> ', socket.id);
@@ -42,6 +49,12 @@ socket.on('connect', () => {
 //     p.textContent = `${data.who} : ${data.msg}`;
 //   });
 // }
+
+// 대화방 날짜 
+ socket.on("date", (formattedDate) => {
+      const dateDisplay = document.getElementById("date-display");
+      dateDisplay.textContent = `${formattedDate}`;
+    });
 
 // [실습3] 채팅창 입장/퇴장 안내 문구
 socket.on('notice', (msg) => {
@@ -208,6 +221,4 @@ socket.on('newMessage', (data) => {
 
   // (선택) 메세지가 많아져서 스크롤이 생기더라도 하단 고정
   chatList.scrollTop = chatList.scrollHeight;
-
-    notice.scrollTop = notice.scrollHeight;
 });

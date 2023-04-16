@@ -39,6 +39,11 @@ body {
   background-color: black;
 }
 
+#date-display{
+  text-align: center;
+  margin-top: 10px;
+}
+
 .my-chat {
   text-align: right;
   display: flex;
