@@ -125,8 +125,8 @@ btn-pass {
 
 /* input ui 변경 시점 width: 1067 */
 @media screen and (max-width: 1067px) {
-  * {
-    font-size: 0.7rem;
+  .chat-list {
+    font-size: 1rem;
   }
   .input {
     height: 5vh;
@@ -137,6 +137,10 @@ btn-pass {
   .nick-list {
     line-height: 5vh;
   }
+  btn-pass {
+    width: 5%;
+  }
+  
 }
 
 @media screen and (max-width: 767px) {

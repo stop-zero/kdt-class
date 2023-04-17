@@ -89,14 +89,12 @@ io.on('connection', (socket) => {
   // disconnect event : 클라이언트가 연결을 끊었을 때 발생 (브라우저 탭 닫음)
   socket.on('disconnect', () => {
     console.log('**** ❌ Server Socket Disonnected >> ', socket.id);
-
-    // 1. xx님 퇴장하셨습니다. 출력
-    io.emit('notice', `${nickObj[socket.id]}님이 퇴장하셨습니다.`); // 퇴장 메세지 "전체 공지"
-    // 2. nickObj에서 닫은 탭의 socket.id 를 삭제
-    delete nickObj[socket.id];
-
-    // 3. 리스트 업데이트
-    updateNickList();
+      // 1. xx님 퇴장하셨습니다. 출력
+      io.emit('notice', `${nickObj[socket.id]}님이 퇴장하셨습니다.`); // 퇴장 메세지 "전체 공지"
+      // 2. nickObj에서 닫은 탭의 socket.id 를 삭제
+      delete nickObj[socket.id];
+      // 3. 리스트 업데이트
+      updateNickList();
   });
 
   // [실습4] 채팅창 메세지 전송 Step1
@@ -111,7 +109,7 @@ io.on('connection', (socket) => {
     // io.emit('newMessage', sendData);
 
     // 메시지 번호 카운터 증가
-    // msgCounter++;
+    const number = msgCounter++;
 
     // [실습5] DM 기능 구현
     // 만약에 dm 메세지라면; 그 특정 socket.id 에게만 메세지 전달
@@ -124,7 +122,8 @@ io.on('connection', (socket) => {
       let dmSocketId = obj.dm; // 각 닉네임에 해당하는 socket.id
       const sendData = {
         // msgCounter: obj.msgCounter,
-        msgCounter: msgCounter++,
+        // msgCounter: msgCounter++,
+        number: number,
         nick: obj.myNick,
         dm: '// ',
         msg: obj.msg,
@@ -138,7 +137,8 @@ io.on('connection', (socket) => {
     } else {
       // all 전송 (전체 공지)
       const sendData = {
-        msgCounter: msgCounter++,
+        // msgCounter: msgCounter++,
+        number: number,
         nick: obj.myNick,
         msg: obj.msg,
         time: obj.time,

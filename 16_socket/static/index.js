@@ -58,7 +58,7 @@ socket.on('notice', (msg) => {
   document
     .querySelector('#chat-list')
     .insertAdjacentHTML('beforeend', `<div class="notice">${msg}</div>`);
-});
+})
 
 //대화 상대
 socket.on('memberList', (msg) => {
@@ -159,9 +159,6 @@ socket.on('newMessage', (data) => {
   // 가장 안쪽 div 요소 생성
   let divChat = document.createElement('div');
 
-  // #number-list 요소 선택
-  // let numList = document.querySelector('.number-list');
-  // let div2 = document.createElement('div');
   //msgCounter
   let divNum = document.createElement('divnum');
 
@@ -199,13 +196,9 @@ socket.on('newMessage', (data) => {
   // not dm; divChat.textContet = '' + 누가 : 메세지
 
   //생성될 때마다 값을 출력.
-  // let msgCounter = document.getElementsByClassName('msgCounter').length;
-  console.log('msgCounter >> ', data.msgCounter);
-  // divNum.textContent = divNum.textContent + `${msgCounter} : ${data.time}`;
-  // divNum.textContent = divNum.textContent + `${msgCounter}`;
-  divNum.textContent = divNum.textContent + `${data.msgCounter}`;
+  console.log('msgCounter >> ', data.number);
+  divNum.textContent = divNum.textContent + `${data.number}`;
   div.append(divNum);
-  // numList.append(div);
 
   // divChat 을 div 요소에 추가
   div.append(divChat);
