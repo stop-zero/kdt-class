@@ -98,3 +98,20 @@ const noTopingCookies = ['촉촉한쿠키', '안촉촉한 쿠키'];
 const topingCookies = ['바나나쿠키', '블루베리쿠키', '딸기쿠키'];
 const allCookies = [...noTopingCookies, '초코칩쿠키', ...topingCookies];
 console.log(allCookies) //[ '촉촉한쿠키', '안촉촉한 쿠키', '초코칩쿠키', '바나나쿠키', '블루베리쿠키', '딸기쿠키' ]
+
+
+//일부 반환 값 무시하기
+function f() {
+  return [1, 2, 3];
+}
+
+const [num1, , num2] = f();
+console.log(num1); // 1
+console.log(num2); // 3
+
+const [fruit1, ...fruit2] = ['apple','banana', 'peach'];
+console.log(fruit1); // apple
+console.log(fruit2); // [ 'banana', 'peach' ]
+
+
+
