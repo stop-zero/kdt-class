@@ -3,13 +3,6 @@ import FunctionComponent from './functionComponent';
 import Larva from './Larva';
 
 function App() {
-  const name = '두부';
-  const animal = '강아지';
-  const num = 3 + 5 === 8 ? '정답입니다.' : '오답입니다!';
-  const a = 5,
-    b = 4;
-  const title = 'Hello World';
-
   return (
     <>
       {/* <div style={{ backgroundColor: 'black', height: '1000px' }}></div> */}
