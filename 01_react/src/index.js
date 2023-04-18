@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 // import App from './App';
-import Clock from './Clock';
+// import Clock from './Clock';
 import App from './App';
 
 
