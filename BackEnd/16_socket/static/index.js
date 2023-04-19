@@ -159,6 +159,9 @@ socket.on('newMessage', (data) => {
   // 가장 안쪽 div 요소 생성
   let divChat = document.createElement('div');
 
+  // #number-list 요소 선택
+  // let numList = document.querySelector('.number-list');
+  // let div2 = document.createElement('div');
   //msgCounter
   let divNum = document.createElement('divnum');
 
@@ -196,9 +199,13 @@ socket.on('newMessage', (data) => {
   // not dm; divChat.textContet = '' + 누가 : 메세지
 
   //생성될 때마다 값을 출력.
-  console.log('msgCounter >> ', data.number);
-  divNum.textContent = divNum.textContent + `${data.number}`;
+  // let msgCounter = document.getElementsByClassName('msgCounter').length;
+  console.log('msgCounter >> ', data.msgCounter);
+  // divNum.textContent = divNum.textContent + `${msgCounter} : ${data.time}`;
+  // divNum.textContent = divNum.textContent + `${msgCounter}`;
+  divNum.textContent = divNum.textContent + `${data.msgCounter}`;
   div.append(divNum);
+  // numList.append(div);
 
   // divChat 을 div 요소에 추가
   div.append(divChat);
@@ -212,3 +219,4 @@ socket.on('newMessage', (data) => {
   // (선택) 메세지가 많아져서 스크롤이 생기더라도 하단 고정
   chatList.scrollTop = chatList.scrollHeight;
 });
+

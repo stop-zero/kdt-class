@@ -109,7 +109,7 @@ io.on('connection', (socket) => {
     // io.emit('newMessage', sendData);
 
     // 메시지 번호 카운터 증가
-    const number = msgCounter++;
+    // msgCounter++;
 
     // [실습5] DM 기능 구현
     // 만약에 dm 메세지라면; 그 특정 socket.id 에게만 메세지 전달
@@ -122,8 +122,7 @@ io.on('connection', (socket) => {
       let dmSocketId = obj.dm; // 각 닉네임에 해당하는 socket.id
       const sendData = {
         // msgCounter: obj.msgCounter,
-        // msgCounter: msgCounter++,
-        number: number,
+        msgCounter: msgCounter++,
         nick: obj.myNick,
         dm: '// ',
         msg: obj.msg,
@@ -137,8 +136,7 @@ io.on('connection', (socket) => {
     } else {
       // all 전송 (전체 공지)
       const sendData = {
-        // msgCounter: msgCounter++,
-        number: number,
+        msgCounter: msgCounter++,
         nick: obj.myNick,
         msg: obj.msg,
         time: obj.time,
@@ -152,3 +150,4 @@ io.on('connection', (socket) => {
 http.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
 });
+
