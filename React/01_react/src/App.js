@@ -1,6 +1,12 @@
 import ClassComponent from './ClassComponent';
 import FunctionComponent from './functionComponent';
 import HiComponent from './HiComponent';
+import Exstate1 from './Exstate1';
+import Exstate2 from './Exstate2';
+import Exstate3 from './Exstate3';
+import Exstate4 from './Exstate4';
+
+
 import Larva from './Larva';
 
 function App() {
@@ -18,7 +24,13 @@ function App() {
       <ClassComponent />
       {/* <FunctionComponent name="둘리" age="11" /> */}
     {/* <FunctionComponent></FunctionComponent> */}
-<HiComponent></HiComponent>
+{/* <HiComponent></HiComponent> */}
+
+{/*4/19 실습 */}
+{/* <Exstate1></Exstate1> */}
+{/* <Exstate2></Exstate2> */}
+{/* <Exstate3></Exstate3> */}
+<Exstate4></Exstate4>
     </>
   );
 }
