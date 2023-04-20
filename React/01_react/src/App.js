@@ -19,9 +19,9 @@ function App() {
       {/* 여러 번 재사용 가능 */}
       {/* <Larva /> */}
       {/* <Larva /> */}
-      <ClassComponent name="홍길동" age="14" func={test}/>
+      {/* <ClassComponent name="홍길동" age="14" func={test}/>
       <ClassComponent name="성춘향" age="11" />
-      <ClassComponent />
+      <ClassComponent /> */}
       {/* <FunctionComponent name="둘리" age="11" /> */}
     {/* <FunctionComponent></FunctionComponent> */}
 {/* <HiComponent></HiComponent> */}
