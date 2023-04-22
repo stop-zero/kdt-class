@@ -3,6 +3,8 @@ import RefSample4 from './RefSample4';
 import Ex_Ref from './Ex_Ref';
 import LifeCycleFunc from './LifeCycleFunc';
 import LifeCycleClass from './LifeCycleClass';
+// import PostItem from './PostItem';
+import PostList from './PostList';
 
 function App() {
   return (
@@ -11,7 +13,8 @@ function App() {
       {/* <RefSample4/> */}
       {/* <Ex_Ref /> */}
       {/* <LifeCycleFunc/> */}
-      <LifeCycleClass/>
+      {/* <LifeCycleClass/> */}
+      <PostList/>
     </div>
   );
 }

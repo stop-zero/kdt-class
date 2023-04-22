@@ -1,0 +1,17 @@
+.PostList{
+    text-align: center;
+    
+}
+
+header{
+    background-color: rgb(182, 182, 251);
+    color: white;
+    font-size: 1.5rem;
+}
+.PostItem{
+    background-color: rgb(227, 245, 248);
+    width: 80%;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: 10%;
+}
