@@ -38,7 +38,7 @@ const Event_ex2 = () => {
         onChange={(e) => {
           setInputName(e.target.value);
         }}
-        onKeyDown={(e) => activeEnter(e)}
+        c
       />
       <label> 제목: </label>
       <input
