@@ -8,6 +8,7 @@ import Exstate4 from './Exstate4';
 
 
 import Larva from './Larva';
+import ClassComponent2 from './studyState';
 
 function App() {
   const test = () => {
@@ -21,16 +22,17 @@ function App() {
       {/* <Larva /> */}
       {/* <ClassComponent name="홍길동" age="14" func={test}/>
       <ClassComponent name="성춘향" age="11" />
-      <ClassComponent /> */}
+      <ClassComponent />  */}
       {/* <FunctionComponent name="둘리" age="11" /> */}
-    {/* <FunctionComponent></FunctionComponent> */}
-{/* <HiComponent></HiComponent> */}
+      {/* <FunctionComponent></FunctionComponent> */}
+      {/* <HiComponent></HiComponent> */}
 
-{/*4/19 실습 */}
-{/* <Exstate1></Exstate1> */}
-{/* <Exstate2></Exstate2> */}
-{/* <Exstate3></Exstate3> */}
-<Exstate4></Exstate4>
+      {/*4/19 실습 */}
+      {/* <Exstate1></Exstate1> */}
+      {/* <Exstate2></Exstate2> */}
+      {/* <Exstate3></Exstate3> */}
+      {/* <Exstate4></Exstate4> */}
+<ClassComponent2/>
     </>
   );
 }

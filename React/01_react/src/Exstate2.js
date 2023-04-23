@@ -4,6 +4,7 @@ import { useState } from 'react';
 function FunctionComponent() {
   
   const [counter, setcounter] = useState(0);
+  // const [value, setValue] = useState(초기값);
   console.log(counter);
   const InClick = () => {
     setcounter(counter + 1);

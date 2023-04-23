@@ -9,6 +9,7 @@ class ClassComponent extends React.Component {
   state = {
     counter: 0,
   };
+  
   up = (name) => {
     console.log(name);
     // this.counter =this.counter+1;
@@ -27,12 +28,12 @@ class ClassComponent extends React.Component {
  
     return (
       <div>
-        {/* <h1>Hello World, Class Component</h1>
+        <h1>Hello World, Class Component</h1>
         <h5>{name}</h5>
         <h5>{age}</h5>
         <h5>{counter}</h5>
         <button onClick={() => this.up('abc')}>숫자 Up!</button>
-        <button onClick={this.down}>숫자 Down!</button> */}
+        <button onClick={this.down}>숫자 Down!</button> 
       </div>
     );
   }
