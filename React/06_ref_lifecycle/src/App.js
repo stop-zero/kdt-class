@@ -5,6 +5,7 @@ import LifeCycleFunc from './LifeCycleFunc';
 import LifeCycleClass from './LifeCycleClass';
 // import PostItem from './PostItem';
 import PostList from './PostList';
+import './App.css';
 
 function App() {
   return (
