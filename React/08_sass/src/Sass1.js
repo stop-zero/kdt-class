@@ -1,8 +1,8 @@
-import './Larva.css';
+import './styles/Sass1.scss';
 
-const () {
+const Sass1 = () => {
   return (
-    <div className="larva" >
+    <div className="larva">
       <div className="body body1">
         <div className="eye eye-white">
           <div className="eye eye-black"></div>
@@ -15,6 +15,6 @@ const () {
       <div className="body body6"></div>
     </div>
   );
-}
+};
 
-export default Larva;
+export default Sass1;
