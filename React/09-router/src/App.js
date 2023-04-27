@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import MainPage from './pages/MainPage';
-import './styles/Common.scss';
 import ProductPage from './pages/ProductPage';
 import ProductDetailPage from './pages/ProductDetailPage';
-import NotFount from './pages/NotFount';
+import NotFound from './pages/NotFound';
 import { useState, useEffect } from 'react';
+import './styles/Common.scss';
 import axios from 'axios';
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
       );
       setProducts(res.data.slice(0, 10));
     };
+
     getProducts();
   }, []);
 
@@ -31,8 +32,11 @@ function App() {
             path="/products"
             element={<ProductPage products={products} />}
           />
-          <Route path="/products/:productId" element={<ProductDetailPage />} />
-          <Route path="*" element={<NotFount />} />
+          <Route
+            path="/products/:productId"
+            element={<ProductDetailPage products={products} />}
+          />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>

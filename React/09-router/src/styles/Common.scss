@@ -20,6 +20,10 @@
 .MainPage {
   background-color: rgb(255, 238, 208);
   min-height: 100vh;
+  &.Dark{
+    background-color: rgb(40, 40, 40);
+    color: white;
+  }
 }
 
 .ProductDetailPage {
@@ -36,3 +40,16 @@
   background-color: rgb(255, 208, 236);
   min-height: 100vh;
 }
+
+.ProductItem {
+    list-style: none;
+  background-color: white;
+  width: 80vw;
+  margin: 30px auto 0 auto;
+
+  &:hover{
+    font-weight: 700;
+  }
+}
+
+
